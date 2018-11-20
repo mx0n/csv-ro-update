@@ -10,6 +10,8 @@ if(isset($_POST["upload"]))
   $filename = explode(".", $_FILES['product_file']['name']);
   if(end($filename) == "csv")
   {
+    $query_disable = "UPDATE `oc_relatedoptions` SET `quantity` = 0";
+    mysqli_query($connect, $query_disable);
    $handle = fopen($_FILES['product_file']['tmp_name'], "r");
    $rows = 0;
    while($data = fgetcsv($handle, 1000, ";"))
