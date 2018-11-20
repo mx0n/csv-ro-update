@@ -1,5 +1,6 @@
 <?php
-$connect = mysqli_connect("localhost", "root", "", "oc23");
+require('config.php');
+$connect = mysqli_connect(DB_HOSTNAME,DB_USERNAME,DB_PASSWORD,DB_DATABASE) or die('Connect error');
 $message = '';
 
 if(isset($_POST["upload"]))
