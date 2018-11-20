@@ -1,6 +1,6 @@
 <?php
 require('config.php');
-$connect = mysqli_connect(DB_HOSTNAME,DB_USERNAME,DB_PASSWORD,DB_DATABASE) or die('Connect error');
+$connect = mysqli_connect(DB_HOSTNAME,DB_USERNAME,DB_PASSWORD,DB_DATABASE) or die('Ошибка подключения');
 $message = '';
 
 if(isset($_POST["upload"]))
@@ -30,27 +30,27 @@ if(isset($_POST["upload"]))
   }
   else
   {
-   $message = '<label class="text-danger">Please Select CSV File only</label>';
+   $message = '<label class="text-danger">Доступен импорт только файлов в формате CSV</label>';
   }
  }
  else
  {
-  $message = '<label class="text-danger">Please Select File</label>';
+  $message = '<label class="text-danger">Выберите файл</label>';
  }
 }
 
 if(isset($_GET["updation"]))
 {
- $message = '<label class="text-success">Product Updation Done</label>';
+ $message = '<label class="text-success">Остатки обновлены</label>';
 }
 
-$query = "SELECT * FROM oc_relatedoptions";
-$result = mysqli_query($connect, $query);
+//$query = "SELECT * FROM oc_relatedoptions";
+//$result = mysqli_query($connect, $query);
 ?>
 <!DOCTYPE html>
 <html>
  <head>
-  <title>Update Mysql Database through Upload CSV File using PHP</title>
+  <title>Обновление остатков</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -58,10 +58,10 @@ $result = mysqli_query($connect, $query);
  <body>
   <br />
   <div class="container">
-   <h2 align="center">Update Mysql Database through Upload CSV File using PHP</a></h2>
+   <h2 align="center">Обновление остатков</a></h2>
    <br />
    <form method="post" enctype='multipart/form-data'>
-    <p><label>Please Select File(Only CSV Formate)</label>
+    <p><label>Выберите файл с остатками (Только в формате CSV)</label>
     <input type="file" name="product_file" /></p>
     <br />
     <input type="submit" name="upload" class="btn btn-info" value="Upload" />
@@ -76,7 +76,7 @@ $result = mysqli_query($connect, $query);
       <th>quantity</th>
       <th>price</th>
      </tr>
-     <?php
+     <!-- <?php
      while($row = mysqli_fetch_array($result))
      {
       echo '
@@ -87,7 +87,7 @@ $result = mysqli_query($connect, $query);
       </tr>
       ';
      }
-     ?>
+     ?> -->
     </table>
    </div>
   </div>
